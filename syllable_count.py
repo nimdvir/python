@@ -1,3 +1,5 @@
+import re
+
 def syllable_count(word):
     word = word.lower()
     count = 0
@@ -13,5 +15,15 @@ def syllable_count(word):
         count += 1
     return count
 
+def count_syllables(word):
+    return len(
+        re.findall('(?!e$)[aeiouy]+', word, re.I) +
+        re.findall('^[^aeiouy]*e$', word, re.I)
+    )
+
 word = input("Please enter a word: ")
 print("There are " + str(syllable_count(word)) + " syllables in '" + word + "'")
+print("Second option! There are " + str(count_syllables(word)) + " syllables in '" + word + "'")
+
+
+
